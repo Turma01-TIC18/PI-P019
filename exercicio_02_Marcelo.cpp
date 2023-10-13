@@ -19,7 +19,6 @@ public:
         }
     }
 
-    // Método para excluir um item do conjunto, se ele existir
     void excluir(const string& s) {
         for (auto it = items.begin(); it != items.end(); ++it) {
             if (*it == s) {
@@ -29,7 +28,6 @@ public:
         }
     }
 
-    // Método para verificar se um item existe no conjunto
     bool contem(const string& s) const {
         for (const string& item : items) {
             if (item == s) {
@@ -39,7 +37,6 @@ public:
         return false;
     }
 
-    // Método para exibir os itens do conjunto
     void exibir() const {
         cout << "Itens no conjunto:" << endl;
         for (const string& item : items) {
@@ -54,15 +51,18 @@ int main() {
     conjunto.inserir("item1");
     conjunto.inserir("item2");
     conjunto.inserir("item3");
-    conjunto.inserir("item1"); // Não deve ser inserido novamente
+    conjunto.inserir("item1"); 
     conjunto.inserir("item4");
 
     conjunto.exibir();
+    cout << "" << endl;
 
     conjunto.excluir("item2");
-    conjunto.excluir("item5"); // Não deve causar erro, pois "item5" não está no conjunto
+    conjunto.excluir("item5"); 
 
     conjunto.exibir();
+    
+    cout << "" << endl;
 
     return 0;
 }
