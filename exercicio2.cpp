@@ -38,6 +38,21 @@ public:
     }
 
 
+     ItemSet operator+(const ItemSet& other) const {
+        ItemSet result = *this; 
+
+        for (const string& item : other.conjuntos) {
+ 
+            if (find(result.conjuntos.begin(), result.conjuntos.end(), item) == result.conjuntos.end()) {
+                result.conjuntos.push_back(item);
+            }
+        }
+
+        return result;
+    }
+
+
+
     ItemSet operator-(const ItemSet& other) const {
         //Implementar
     }
@@ -50,6 +65,7 @@ public:
 
 int main() {
     ItemSet conjuntoA;
+
     conjuntoA.inserirItens("Gol1");
     conjuntoA.inserirItens("Gol2");
     conjuntoA.inserirItens("Gol2");
@@ -63,5 +79,19 @@ int main() {
     conjuntoB.mostrarItens();
 
 
-    return 0;
+    ItemSet conjuntoC;
+    conjuntoC.inserirItens("Jogador1");
+    conjuntoC.inserirItens("Jogador2");
+
+    ItemSet resultado = conjuntoB + conjuntoC;
+
+    cout << "\nConjunto A:\n";
+    conjuntoA.mostrarItens();
+
+    cout << "\nResultado de A = B + C:\n";
+    resultado.mostrarItens();
+
+
+return 0;
 }
+
