@@ -88,6 +88,20 @@ public:
         return result; 
     }
 
+    bool operator==(const ItemSet& other) const {
+        if (conjuntos.size() != other.conjuntos.size()) {
+            return false;
+        }
+
+        for (const string& item : conjuntos) {
+            if (find(other.conjuntos.begin(), other.conjuntos.end(), item) == other.conjuntos.end()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 };
 
 int main() {
@@ -128,7 +142,12 @@ int main() {
     cout << "\nResultado de A = B * C:\n";
     resultadoIntersecao.mostrarItens();
 
+     if (conjuntoA == conjuntoB) {
+        cout << "Conjunto A é igual ao conjunto B." << endl;
+    } else {
+        cout << "Conjunto A não é igual ao conjunto B." << endl;
+    }
+
 
 return 0;
 }
-
