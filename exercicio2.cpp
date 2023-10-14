@@ -54,7 +54,17 @@ public:
 
 
     ItemSet operator-(const ItemSet& other) const {
-        //Implementar
+
+        ItemSet result = *this;
+        for (const string& item : other.conjuntos) {
+            auto it = find(result.conjuntos.begin(), result.conjuntos.end(), item);
+            if (it != result.conjuntos.end()) {
+                result.conjuntos.erase(it);
+            }
+        }
+        return result;
+
+        
     }
    
     ItemSet operator!=(const ItemSet& other) const {
