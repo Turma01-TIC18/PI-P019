@@ -4,6 +4,7 @@
 #include <algorithm>
 
 using namespace std;
+
 class ItemSet {
 private:
     vector<string> conjuntos;
@@ -36,6 +37,7 @@ public:
         }
     }
 
+
      ItemSet operator+(const ItemSet& other) const {
         ItemSet result = *this; 
 
@@ -48,6 +50,7 @@ public:
 
         return result;
     }
+
 
 
     ItemSet operator-(const ItemSet& other) const {
@@ -75,6 +78,7 @@ int main() {
 
     conjuntoB.mostrarItens();
 
+
     ItemSet conjuntoC;
     conjuntoC.inserirItens("Jogador1");
     conjuntoC.inserirItens("Jogador2");
@@ -90,3 +94,4 @@ int main() {
 
 return 0;
 }
+
