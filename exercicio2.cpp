@@ -66,12 +66,26 @@ public:
 
         
     }
+
+
    
     ItemSet operator!=(const ItemSet& other) const {
         ItemSet result = *this - other; 
         ItemSet temp  = other - *this;   
         result.conjuntos.insert(result.conjuntos.end(), temp.conjuntos.begin(), temp.conjuntos.end());
         return result;
+    }
+
+    ItemSet operator*(const ItemSet& other) const {
+        ItemSet result;
+
+        for (const string& item : conjuntos) {
+            if (find(other.conjuntos.begin(), other.conjuntos.end(), item) != other.conjuntos.end()) {
+                result.conjuntos.push_back(item);
+            }
+        }
+
+        return result; 
     }
 
 };
@@ -109,7 +123,10 @@ int main() {
     cout << "\nResultado de A = B + C:\n";
     resultado.mostrarItens();
 
+    ItemSet resultadoIntersecao = conjuntoB * conjuntoC;
 
+    cout << "\nResultado de A = B * C:\n";
+    resultadoIntersecao.mostrarItens();
 
 
 return 0;
