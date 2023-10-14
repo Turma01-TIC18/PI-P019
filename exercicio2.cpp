@@ -59,7 +59,7 @@ public:
    
     ItemSet operator!=(const ItemSet& other) const {
         ItemSet result = *this - other; 
-        ItemSet temp = other - *this;   
+        ItemSet temp  = other - *this;   
         result.conjuntos.insert(result.conjuntos.end(), temp.conjuntos.begin(), temp.conjuntos.end());
         return result;
     }
