@@ -58,7 +58,10 @@ public:
     }
    
     ItemSet operator!=(const ItemSet& other) const {
-        //Implementar
+        ItemSet result = *this - other; 
+        ItemSet temp = other - *this;   
+        result.conjuntos.insert(result.conjuntos.end(), temp.conjuntos.begin(), temp.conjuntos.end());
+        return result;
     }
 
 };
@@ -85,11 +88,18 @@ int main() {
 
     ItemSet resultado = conjuntoB + conjuntoC;
 
+    ItemSet resultado2 = conjuntoB != conjuntoA;
+
+    cout << "Diferença de (B <> A)" << endl;
+    resultado2.mostrarItens();
+
     cout << "\nConjunto A:\n";
     conjuntoA.mostrarItens();
 
     cout << "\nResultado de A = B + C:\n";
     resultado.mostrarItens();
+
+
 
 
 return 0;
